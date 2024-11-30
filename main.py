@@ -1,14 +1,14 @@
 import json
 
-cars = [
-    {"id": "1", "name": "G-63", "manufacturer": "Mersedes", "is_petrol": True, "tank_volume": 100},
-    {"id": "2", "name": "M5-f90", "manufacturer": "BMW", "is_petrol": True, "tank_volume": 60},
-    {"id": "3", "name": "Civic", "manufacturer": "Honda", "is_petrol": False, "tank_volume": 50},
-    {"id": "4", "name": "Supra-80", "manufacturer": "Toyota", "is_petrol": True, "tank_volume": 55},
-    {"id": "5", "name": "Berezina", "manufacturer": "BMP-1", "is_petrol": False, "tank_volume": 500}
-]
-with open('cars.json', 'w', encoding='utf-8') as file:
-  json.dump(cars, file, ensure_ascii=False, indent=4)
+flowers = [
+    {"id": "1", "name": "French Rose", "latin_name": "Rosa gallica", "is_red_book_flower": False, "price": 70},
+    {"id": "2", "name": "Madonna Lily", "latin_name": "Lilium candidum", "is_red_book_flower": False, "price": 60},
+    {"id": "3", "name": "Common Peony", "latin_name": "Paeonia officinalis", "is_red_book_flower": False, "price": 50},
+    {"id": "4", "name": "White Water Lily", "latin_name": "", "is_red_book_flower": False, "price": 55},
+    {"id": "5", "name": "Lady's Slipper Orchid", "latin_name": "", "is_red_book_flower": True, "price": 500}
+    ]
+with open('flowers.json', 'w', encoding='utf-8') as file:
+  json.dump(flowers, file, ensure_ascii=False, indent=4)
   
 count=0
 
@@ -23,23 +23,23 @@ while True:
     res = input("\nВыберите пункт из предложенного списка: ")
 
     if res=="1":
-        with open('cars.json', 'r', encoding='utf-8') as file:
+        with open('flowers.json', 'r', encoding='utf-8') as file:
             data = json.load(file)
-            for car in data:
-                print(f"№: {car['id']}, Модель: {car['name']}, Производитель: {car['manufacturer']}, Заправляется бензином: {car['is_petrol']}, Объем бака: {car['tank_volume']}")
+            for flower in data:
+                print(f"№: {flower['id']}, Название: {flower['name']}, Латинское название: {flower['latin_name']}, Является краснокнижным: {flower['is_red_book_flower']}, Цена: {flower['price']}")
                 
         count+=1
         
     elif res=="2":
         num=input("Введите номер записи по которой вы хотите сделать вывод информации:\n")
-        with open('cars.json', 'r', encoding='utf-8') as file:
+        with open('flowers.json', 'r', encoding='utf-8') as file:
             data = json.load(file)
             found = False
-            for car in data:
-                if car['id'] == num:
+            for flower in data:
+                if flower['id'] == num:
                     print(f"\n=============== Найдено ===============")
-                    print(f"{car['id']} >> Модель: {car['name']}, Производитель: {car['manufacturer']}")
-                    print(f"Заправляется бензином: {car['is_petrol']}, Объем бака: {car['tank_volume']}")
+                    print(f"{flower['id']} >> Название {flower['name']}, Латинское название: {flower['latin_name']}")
+                    print(f"Является краснокнижным: {flower['is_red_book_flower']}, Цена: {flower['tank_volume']}")
                     found = True
                     break
             if not found:
@@ -47,36 +47,34 @@ while True:
         count+=1
                 
     elif res=="3":
-        new_id=input("Введите номер записи;")
-        new_name=input("Введите название модели автомобиля:")
-        new_manufacturer=input("Введите название производителя:")
-        new_is_petrol=input("Заправляется бензином?(True/False):")=='True'
-        new_tank_volume = int(input("Введите объем бака: ")) 
-           
-        new_car = {
+        new_id=input("Введите номер записи:")
+        new_name=input("Введите название цветка:")
+        new_latin_name=input("Введите полное латинское название:")
+        new_is_red_book_flower=input("Является краснокнижным?(True/False):")=='True'
+        new_price = int(input("Введите цену: ")) 
+            
+        new_flower = {
             "id": new_id,
             "name": new_name,
-            "manufacturer": new_manufacturer,
-            "is_petrol": new_is_petrol,
-            "tank_volume": new_tank_volume
-        }
-
-        with open('cars.json', 'r+', encoding='utf-8') as file:
+            "latin_name": new_latin_name,
+            "is_red_book_flower": new_is_red_book_flower,
+            "price": new_price
+            }
+        with open('flowers.json', 'r+', encoding='utf-8') as file:
             data = json.load(file)
-            data.append(new_car)
+            data.append(new_flower)
             file.seek(0)
             json.dump(data, file, ensure_ascii=False, indent=4)
-            
         count+=1
     
     elif  res =="4":
      deletе = input("Введите номер записи которую вы хотите удалить: ")
-     with open('cars.json', 'r', encoding='utf-8') as file:
+     with open('flowers.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
         found = False
-        for car in data:
-                if car['id'] == deletе:
-                    data.remove(car)
+        for flower in data:
+                if flower['id'] == deletе:
+                    data.remove(flower)
                     found = True
                     break
         if not found:
@@ -85,7 +83,6 @@ while True:
                 file.seek(0)
                 file.truncate()
                 json.dump(data, file, ensure_ascii=False, indent=4)
-
         count+=1 
            
     elif res =="5":
