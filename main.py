@@ -1,5 +1,6 @@
 import json
 
+
 flowers = [
     {"id": "1", "name": "French Rose", "latin_name": "Rosa gallica", "is_red_book_flower": False, "price": 70},
     {"id": "2", "name": "Madonna Lily", "latin_name": "Lilium candidum", "is_red_book_flower": False, "price": 60},
