@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "name": "French Rose",
+        "latin_name": "Rosa gallica",
+        "is_red_book_flower": false,
+        "price": 70
+    },
+    {
+        "id": "2",
+        "name": "Madonna Lily",
+        "latin_name": "Lilium candidum",
+        "is_red_book_flower": false,
+        "price": 60
+    },
+    {
+        "id": "3",
+        "name": "Common Peony",
+        "latin_name": "Paeonia officinalis",
+        "is_red_book_flower": false,
+        "price": 50
+    },
+    {
+        "id": "4",
+        "name": "White Water Lily",
+        "latin_name": "",
+        "is_red_book_flower": false,
+        "price": 55
+    },
+    {
+        "id": "5",
+        "name": "Lady's Slipper Orchid",
+        "latin_name": "",
+        "is_red_book_flower": true,
+        "price": 500
+    }
+]
