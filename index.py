@@ -27,8 +27,7 @@ def adding_a_record():
     new_name=input("Введите название цветка:")
     new_latin_name=input("Введите полное латинское название:")
     new_is_red_book_flower=input("Является краснокнижным?(True/False):")=='True'
-    new_price = int(input("Введите цену: ")) 
-           
+    new_price = int(input("Введите цену: "))     
     new_flower = {
         "id": new_id,
         "name": new_name,
